@@ -74,11 +74,9 @@ def images_annotations_info(opt):
                 annotations.append(annotation)
                 annotation_id += 1
 
-            image_id += 1  # if you finished annotation work, updates the image id.
-
             except:
                 print(label_path)
-
+        image_id += 1  # if you finished annotation work, updates the image id.
     return images, annotations
 
 
