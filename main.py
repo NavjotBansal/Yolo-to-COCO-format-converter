@@ -11,11 +11,7 @@ import numpy as np
 
 # Class에 맞게 바꿔줘야함
 classes = [
-"chair",
-"handle",
-"table",
-"button",
-"person",
+'Aortic enlargement','Atelectasis','Calcification','Cardiomegaly','Consolidation','ILD','Infiltration','Lung Opacity','Nodule/Mass','Other lesion','Pleural effusion','Pleural thickening','Pneumothorax','Pulmonary fibrosis'
 ]
 
 # Get 'images' and 'annotations' info
