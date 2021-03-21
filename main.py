@@ -52,28 +52,32 @@ def images_annotations_info(opt):
         # yolo format - (class_id, x_center, y_center, width, height)
         # coco format - (annotation_id, x_upper_left, y_upper_left, width, height)
         for line1 in label_read_line:
-            label_line = line1
-            category_id = int(label_line.split()[0]) + 1    # you start with annotation id with '1'
-            x_center = float(label_line.split()[1])
-            y_center = float(label_line.split()[2])
-            width = float(label_line.split()[3])
-            height = float(label_line.split()[4])
+            try:
+                label_line = line1
+                category_id = int(label_line.split()[0]) + 1    # you start with annotation id with '1'
+                x_center = float(label_line.split()[1])
+                y_center = float(label_line.split()[2])
+                width = float(label_line.split()[3])
+                height = float(label_line.split()[4])
 
-            int_x_center = int(img_file.shape[1]*x_center)
-            int_y_center = int(img_file.shape[0]*y_center)
-            int_width = int(img_file.shape[1]*width)
-            int_height = int(img_file.shape[0]*height)
+                int_x_center = int(img_file.shape[1]*x_center)
+                int_y_center = int(img_file.shape[0]*y_center)
+                int_width = int(img_file.shape[1]*width)
+                int_height = int(img_file.shape[0]*height)
 
-            min_x = int_x_center-int_width/2
-            min_y = int_y_center-int_height/2
-            width = int_width
-            height = int_height
+                min_x = int_x_center-int_width/2
+                min_y = int_y_center-int_height/2
+                width = int_width
+                height = int_height
 
-            annotation = create_annotation_yolo_format(min_x, min_y, width, height, image_id, category_id, annotation_id)
-            annotations.append(annotation)
-            annotation_id += 1
+                annotation = create_annotation_yolo_format(min_x, min_y, width, height, image_id, category_id, annotation_id)
+                annotations.append(annotation)
+                annotation_id += 1
 
-        image_id += 1  # if you finished annotation work, updates the image id.
+            image_id += 1  # if you finished annotation work, updates the image id.
+
+            except:
+                print(label_path)
 
     return images, annotations
 
